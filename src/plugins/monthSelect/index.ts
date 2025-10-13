@@ -54,6 +54,8 @@ function monthSelectPlugin(pluginConfig?: Partial<Config>): Plugin {
       );
 
       self.monthsContainer.tabIndex = -1;
+      self.monthsContainer.setAttribute("role", "grid");
+      self.monthsContainer.setAttribute("aria-label", "Months");
 
       buildMonths();
 
@@ -84,6 +86,12 @@ function monthSelectPlugin(pluginConfig?: Partial<Config>): Plugin {
         )
           month.classList.add("today");
         month.textContent = monthToStr(i, config.shorthand, fp.l10n);
+        month.tabIndex = 0;
+        month.setAttribute("role", "button");
+        month.setAttribute(
+          "aria-label",
+          `Select ${monthToStr(i, false, fp.l10n)} ${fp.currentYear}`
+        );
         month.addEventListener("click", selectMonth);
         frag.appendChild(month);
       }
@@ -255,7 +263,7 @@ function monthSelectPlugin(pluginConfig?: Partial<Config>): Plugin {
 
     function onKeyDown(_: any, __: any, ___: any, e: KeyboardEvent) {
       const shouldMove = shifts[e.keyCode] !== undefined;
-      if (!shouldMove && e.keyCode !== 13) {
+      if (!shouldMove && e.keyCode !== 13 && e.keyCode !== 32) {
         return;
       }
 
@@ -282,9 +290,10 @@ function monthSelectPlugin(pluginConfig?: Partial<Config>): Plugin {
           (12 + index + shifts[e.keyCode]) % 12
         ] as HTMLElement).focus();
       } else if (
-        e.keyCode === 13 &&
+        (e.keyCode === 13 || e.keyCode === 32) &&
         self.monthsContainer.contains(document.activeElement)
       ) {
+        e.preventDefault();
         setMonth((document.activeElement as MonthElement).dateObj);
       }
     }

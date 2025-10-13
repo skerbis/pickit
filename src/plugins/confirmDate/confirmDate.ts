@@ -39,8 +39,13 @@ function confirmDatePlugin(pluginConfig: Config): Plugin {
         ) {
           e.preventDefault();
           confirmContainer.focus();
-        } else if (e.key === "Enter" && eventTarget === confirmContainer)
+        } else if (
+          (e.key === "Enter" || e.key === " ") &&
+          eventTarget === confirmContainer
+        ) {
+          e.preventDefault();
           fp.close();
+        }
       },
 
       onReady() {
@@ -52,7 +57,9 @@ function confirmDatePlugin(pluginConfig: Config): Plugin {
           config.confirmText
         );
 
-        confirmContainer.tabIndex = -1;
+        confirmContainer.tabIndex = 0;
+        confirmContainer.setAttribute("role", "button");
+        confirmContainer.setAttribute("aria-label", "Confirm date selection");
         confirmContainer.innerHTML += config.confirmIcon;
 
         confirmContainer.addEventListener("click", fp.close);
