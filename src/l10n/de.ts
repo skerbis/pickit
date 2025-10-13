@@ -65,6 +65,9 @@ export const German: CustomLocale = {
   minuteAriaLabel: "Minute",
   prevMonthAriaLabel: "Vorheriger Monat",
   nextMonthAriaLabel: "Nächster Monat",
+  datePickerAriaLabel: "Datumsauswahl",
+  confirmDateAriaLabel: "Datumswahl bestätigen",
+  monthsAriaLabel: "Monate",
   time_24hr: true,
 };
 

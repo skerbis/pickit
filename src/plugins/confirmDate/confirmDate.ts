@@ -59,7 +59,10 @@ function confirmDatePlugin(pluginConfig: Config): Plugin {
 
         confirmContainer.tabIndex = 0;
         confirmContainer.setAttribute("role", "button");
-        confirmContainer.setAttribute("aria-label", "Confirm date selection");
+        confirmContainer.setAttribute(
+          "aria-label",
+          fp.l10n.confirmDateAriaLabel || "Confirm date selection"
+        );
         confirmContainer.innerHTML += config.confirmIcon;
 
         confirmContainer.addEventListener("click", fp.close);

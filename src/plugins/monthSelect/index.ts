@@ -55,7 +55,10 @@ function monthSelectPlugin(pluginConfig?: Partial<Config>): Plugin {
 
       self.monthsContainer.tabIndex = -1;
       self.monthsContainer.setAttribute("role", "grid");
-      self.monthsContainer.setAttribute("aria-label", "Months");
+      self.monthsContainer.setAttribute(
+        "aria-label",
+        fp.l10n.monthsAriaLabel || "Months"
+      );
 
       buildMonths();
 

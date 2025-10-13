@@ -579,7 +579,7 @@ function FlatpickrInstance(
     );
     self.calendarContainer.tabIndex = -1;
     self.calendarContainer.setAttribute("role", "dialog");
-    self.calendarContainer.setAttribute("aria-label", "Date picker");
+    self.calendarContainer.setAttribute("aria-label", self.l10n.datePickerAriaLabel || "Date picker");
 
     if (!self.config.noCalendar) {
       fragment.appendChild(buildMonthNav());
