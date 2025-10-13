@@ -578,6 +578,8 @@ function FlatpickrInstance(
       "flatpickr-calendar"
     );
     self.calendarContainer.tabIndex = -1;
+    self.calendarContainer.setAttribute("role", "dialog");
+    self.calendarContainer.setAttribute("aria-label", "Date picker");
 
     if (!self.config.noCalendar) {
       fragment.appendChild(buildMonthNav());
@@ -1096,9 +1098,15 @@ function FlatpickrInstance(
       "flatpickr-prev-month"
     );
     self.prevMonthNav.innerHTML = self.config.prevArrow;
+    self.prevMonthNav.setAttribute("aria-label", self.l10n.prevMonthAriaLabel);
+    self.prevMonthNav.setAttribute("role", "button");
+    self.prevMonthNav.setAttribute("tabindex", "0");
 
     self.nextMonthNav = createElement("span", "flatpickr-next-month");
     self.nextMonthNav.innerHTML = self.config.nextArrow;
+    self.nextMonthNav.setAttribute("aria-label", self.l10n.nextMonthAriaLabel);
+    self.nextMonthNav.setAttribute("role", "button");
+    self.nextMonthNav.setAttribute("tabindex", "0");
 
     buildMonths();
 
@@ -1645,6 +1653,7 @@ function FlatpickrInstance(
     // "Tab"                              9
     // "Enter"                           13
     // "Escape"     (IE "Esc")           27
+    // " " (Space)                       32
     // "ArrowLeft"  (IE "Left")          37
     // "ArrowUp"    (IE "Up")            38
     // "ArrowRight" (IE "Right")         39
@@ -1658,6 +1667,17 @@ function FlatpickrInstance(
     const allowInput = self.config.allowInput;
     const allowKeydown = self.isOpen && (!allowInput || !isInput);
     const allowInlineKeydown = self.config.inline && isInput && !allowInput;
+
+    // Handle Enter/Space on navigation buttons
+    if ((e.keyCode === 13 || e.keyCode === 32) && self.prevMonthNav && self.nextMonthNav && (
+      self.prevMonthNav.contains(eventTarget as Node) ||
+      self.nextMonthNav.contains(eventTarget as Node)
+    )) {
+      e.preventDefault();
+      const isPrevMonth = self.prevMonthNav.contains(eventTarget as Node);
+      changeMonth(isPrevMonth ? -1 : 1);
+      return;
+    }
 
     if (e.keyCode === 13 && isInput) {
       if (allowInput) {
