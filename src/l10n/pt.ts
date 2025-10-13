@@ -55,6 +55,15 @@ export const Portuguese: CustomLocale = {
   },
 
   rangeSeparator: " até ",
+  yearAriaLabel: "Ano",
+  monthAriaLabel: "Mês",
+  hourAriaLabel: "Hora",
+  minuteAriaLabel: "Minuto",
+  prevMonthAriaLabel: "Mês anterior",
+  nextMonthAriaLabel: "Mês seguinte",
+  datePickerAriaLabel: "Seletor de data",
+  confirmDateAriaLabel: "Confirmar seleção de data",
+  monthsAriaLabel: "Meses",
   time_24hr: true,
 };
 

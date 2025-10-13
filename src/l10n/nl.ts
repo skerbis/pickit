@@ -59,6 +59,15 @@ export const Dutch: CustomLocale = {
   rangeSeparator: " t/m ",
   scrollTitle: "Scroll voor volgende / vorige",
   toggleTitle: "Klik om te wisselen",
+  yearAriaLabel: "Jaar",
+  monthAriaLabel: "Maand",
+  hourAriaLabel: "Uur",
+  minuteAriaLabel: "Minuut",
+  prevMonthAriaLabel: "Vorige maand",
+  nextMonthAriaLabel: "Volgende maand",
+  datePickerAriaLabel: "Datumkiezer",
+  confirmDateAriaLabel: "Bevestig datumselectie",
+  monthsAriaLabel: "Maanden",
   time_24hr: true,
 
   ordinal: (nth) => {

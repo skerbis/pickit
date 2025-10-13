@@ -62,6 +62,14 @@ export const Russian: CustomLocale = {
   toggleTitle: "Нажмите для переключения",
   amPM: ["ДП", "ПП"],
   yearAriaLabel: "Год",
+  monthAriaLabel: "Месяц",
+  hourAriaLabel: "Час",
+  minuteAriaLabel: "Минута",
+  prevMonthAriaLabel: "Предыдущий месяц",
+  nextMonthAriaLabel: "Следующий месяц",
+  datePickerAriaLabel: "Выбор даты",
+  confirmDateAriaLabel: "Подтвердить выбор даты",
+  monthsAriaLabel: "Месяцы",
   time_24hr: true,
 };
 

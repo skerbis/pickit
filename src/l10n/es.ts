@@ -60,6 +60,15 @@ export const Spanish: CustomLocale = {
 
   firstDayOfWeek: 1,
   rangeSeparator: " a ",
+  yearAriaLabel: "Año",
+  monthAriaLabel: "Mes",
+  hourAriaLabel: "Hora",
+  minuteAriaLabel: "Minuto",
+  prevMonthAriaLabel: "Mes anterior",
+  nextMonthAriaLabel: "Mes siguiente",
+  datePickerAriaLabel: "Selector de fecha",
+  confirmDateAriaLabel: "Confirmar selección de fecha",
+  monthsAriaLabel: "Meses",
   time_24hr: true,
 };
 

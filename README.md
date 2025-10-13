@@ -30,7 +30,7 @@ Feature overview:
 - Easily disable specific dates, date ranges, or any date using arbitrary logic
 - Week numbers
 - 51 locales
-- 9 colorful themes (incl. dark, material, and UIKit)
+- 10 beautiful themes (incl. dark, material, UIKit, and glassmorphism)
 - Numerous plugins
 - Libraries available for React, Angular, Vue, Ember, and more
 
@@ -40,6 +40,14 @@ flatpickr provides more functionality at a fraction of the size of other librari
 
 ## Compatibility
 IE9 and up, Edge, iOS Safari 6+, Chrome 8+, Firefox 6+
+
+### Browser-Specific Enhancements
+
+flatpickr includes specific fixes and optimizations for various browsers:
+
+- **Safari**: Enhanced select dropdown rendering with proper padding and appearance fixes
+- **Cross-browser**: Consistent styling across all modern browsers with vendor prefixes
+- **Mobile**: Touch-optimized interactions for iOS and Android
 
 ## Accessibility
 
@@ -66,7 +74,19 @@ All interactive elements include proper ARIA roles and labels:
 
 ### Localized ARIA Labels
 
-All ARIA labels are fully localizable. Available in English, German, and 49+ other languages:
+All ARIA labels are fully localizable. Complete translations available in:
+
+- **English** (default)
+- **German** (Deutsch)
+- **French** (Français)
+- **Spanish** (Español)
+- **Italian** (Italiano)
+- **Dutch** (Nederlands)
+- **Portuguese** (Português)
+- **Russian** (Русский)
+- **Japanese** (日本語)
+- **Chinese** (中文)
+- ...and 41+ other languages ready to be extended
 
 **English:**
 - Date picker: "Date picker"
@@ -83,6 +103,12 @@ All ARIA labels are fully localizable. Available in English, German, and 49+ oth
 - Confirm: "Datumswahl bestätigen"
 - Year: "Jahr"
 - Month: "Monat"
+
+**French:**
+- Date picker: "Sélecteur de date"
+- Previous month: "Mois précédent"
+- Next month: "Mois suivant"
+- Confirm: "Confirmer la sélection de date"
 
 To use a localized version, simply set the locale:
 
