@@ -189,6 +189,18 @@
         <button class="theme-btn" data-theme="airbnb">Airbnb</button>
         <button class="theme-btn" data-theme="glassmorphism">Glassmorphism</button>
         <button class="theme-btn" data-theme="uikit">UIKit</button>
+        <button class="theme-btn" data-theme="custom">Custom (CSS Variables) 🎨</button>
+      </div>
+      <div id="custom-theme-info" style="display: none; margin-top: 15px; padding: 15px; background: #f8f9fa; border-radius: 6px; border-left: 4px solid #e91e63;">
+        <strong>🎨 Custom Theme with CSS Variables</strong>
+        <p style="margin: 8px 0; font-size: 13px; color: #666;">
+          This theme can be fully customized using CSS variables. Override these variables to change colors, shadows, and more:
+        </p>
+        <code style="display: block; background: white; padding: 10px; border-radius: 4px; font-size: 12px; overflow-x: auto;">
+          --fp-bg, --fp-border-color, --fp-border-radius, --fp-shadow,<br>
+          --fp-month-bg, --fp-month-fg, --fp-weekdays-bg, --fp-weekdays-fg,<br>
+          --fp-day-fg, --fp-day-hover-bg, --fp-today-color, --fp-selected-bg, etc.
+        </code>
       </div>
     </div>
 
@@ -506,6 +518,51 @@ flatpickr("#disabled-dates", {
       </div>
     </div>
 
+    <!-- Localization -->
+    <div class="demo-section">
+      <h2>🌍 Localization (i18n)</h2>
+      <p class="feature-description">flatpickr supports multiple languages. Here are examples with German (Deutsch) localization</p>
+      <div class="demo-grid">
+        <div class="demo-item">
+          <label>Deutsches Datum (German Date)</label>
+          <input type="text" id="german-date" placeholder="Datum auswählen...">
+        </div>
+        <div class="demo-item">
+          <label>Deutsche Datum & Zeit (German DateTime)</label>
+          <input type="text" id="german-datetime" placeholder="Datum und Zeit auswählen...">
+        </div>
+        <div class="demo-item">
+          <label>Deutscher Datumsbereich (German Range)</label>
+          <input type="text" id="german-range" placeholder="Zeitraum auswählen...">
+        </div>
+      </div>
+      <div class="code-example">
+        <pre><code>// Import German locale
+import { German } from "flatpickr/dist/l10n/de.js";
+
+// German date picker
+flatpickr("#german-date", {
+  locale: German,
+  dateFormat: "d.m.Y"
+});
+
+// German datetime picker (24h format)
+flatpickr("#german-datetime", {
+  locale: German,
+  enableTime: true,
+  time_24hr: true,
+  dateFormat: "d.m.Y H:i"
+});
+
+// German range picker
+flatpickr("#german-range", {
+  locale: German,
+  mode: "range",
+  dateFormat: "d.m.Y"
+});</code></pre>
+      </div>
+    </div>
+
   </div>
   
   <!-- classList polyfill for IE9 -->
@@ -517,11 +574,13 @@ flatpickr("#disabled-dates", {
   <script src="./dist/plugins/monthSelect/index.js"></script>
   <script src="./dist/plugins/scrollPlugin.js"></script>
   <script src="./dist/plugins/weekSelect/weekSelect.js"></script>
+  <script src="./dist/l10n/de.js"></script>
 
   <script>
     // Theme switcher functionality
     var themeButtons = document.querySelectorAll('.theme-btn');
     var mainThemeLink = document.getElementById('main-theme');
+    var customThemeInfo = document.getElementById('custom-theme-info');
     
     themeButtons.forEach(function(btn) {
       btn.addEventListener('click', function() {
@@ -530,6 +589,13 @@ flatpickr("#disabled-dates", {
         // Update active button
         themeButtons.forEach(function(b) { b.classList.remove('active'); });
         this.classList.add('active');
+        
+        // Show/hide custom theme info
+        if (theme === 'custom') {
+          customThemeInfo.style.display = 'block';
+        } else {
+          customThemeInfo.style.display = 'none';
+        }
         
         // Change theme
         if (theme === 'default') {
@@ -671,6 +737,25 @@ flatpickr("#disabled-dates", {
           return (date.getDay() === 0 || date.getDay() === 6);
         }
       ]
+    });
+
+    // Localization - German examples
+    flatpickr("#german-date", {
+      locale: flatpickr.l10ns.de,
+      dateFormat: "d.m.Y"
+    });
+
+    flatpickr("#german-datetime", {
+      locale: flatpickr.l10ns.de,
+      enableTime: true,
+      time_24hr: true,
+      dateFormat: "d.m.Y H:i"
+    });
+
+    flatpickr("#german-range", {
+      locale: flatpickr.l10ns.de,
+      mode: "range",
+      dateFormat: "d.m.Y"
     });
   </script>
 </body>

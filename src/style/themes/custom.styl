@@ -1,0 +1,145 @@
+// Custom Theme for flatpickr
+// Fully customizable via CSS variables
+// Example: Pink theme with enhanced shadows
+
+// Base Stylus variables - these provide default colors for the theme
+// The output CSS will use CSS variables that can be easily customized
+$calendarBackground = #ffffff
+$calendarBorderColor = #e91e63
+
+$monthForeground = #ffffff
+$monthBackground = #e91e63
+
+$weekdaysBackground = #f48fb1
+$weekdaysForeground = #ffffff
+
+$dayForeground = #333333
+$dayHoverBackground = #fce4ec
+
+$todayColor = #e91e63
+$today_fg_color = #333333
+
+$selectedDayBackground = #e91e63
+$selectedDayForeground = #ffffff
+
+$disabled_day_color = #cccccc
+
+$noCalendarBorder = true
+
+@require "../flatpickr"
+
+// Enhanced styling with shadows and customization via CSS variables
+// Override these CSS variables to customize the theme:
+// --fp-bg, --fp-border-color, --fp-month-bg, --fp-month-fg, etc.
+
+.flatpickr-calendar
+	background var(--fp-bg, #ffffff)
+	border-radius var(--fp-border-radius, 12px)
+	box-shadow var(--fp-shadow, 0 10px 40px rgba(233, 30, 99, 0.3), 0 2px 8px rgba(0, 0, 0, 0.1))
+	border 2px solid var(--fp-border-color, #e91e63)
+
+.flatpickr-months
+	background var(--fp-month-bg, #e91e63)
+	border-radius var(--fp-border-radius, 12px) var(--fp-border-radius, 12px) 0 0
+	
+	.flatpickr-prev-month,
+	.flatpickr-next-month
+		fill var(--fp-month-fg, #ffffff)
+		&:hover
+			svg
+				fill var(--fp-arrow-hover-color, #fce4ec)
+
+.flatpickr-current-month
+	.flatpickr-monthDropdown-months
+		background var(--fp-month-bg, #e91e63)
+		color var(--fp-month-fg, #ffffff)
+		border none
+		
+	.numInputWrapper
+		input.cur-year
+			color var(--fp-month-fg, #ffffff)
+
+.flatpickr-current-month .numInputWrapper
+	.arrowUp,
+	.arrowDown
+		&:after
+			border-bottom-color var(--fp-month-fg, #ffffff)
+	.arrowDown:after
+		border-top-color var(--fp-month-fg, #ffffff)
+
+span.flatpickr-weekday
+	background var(--fp-weekdays-bg, #f48fb1)
+	color var(--fp-weekdays-fg, #ffffff)
+	font-weight 600
+	text-transform uppercase
+	font-size 11px
+	letter-spacing 0.5px
+
+.flatpickr-day
+	color var(--fp-day-fg, #333333)
+	border-radius var(--fp-day-border-radius, 8px)
+	transition all 0.3s ease
+	font-weight 500
+	border none
+	
+	&.today
+		border-color var(--fp-today-color, #e91e63)
+		color var(--fp-today-fg, #333333)
+		background var(--fp-today-bg, rgba(233, 30, 99, 0.1))
+		font-weight 600
+		&:hover,
+		&:focus
+			border-color var(--fp-today-color, #e91e63)
+			background var(--fp-today-hover-bg, rgba(233, 30, 99, 0.2))
+			color var(--fp-today-fg, #333333)
+			box-shadow 0 2px 8px rgba(233, 30, 99, 0.4)
+	
+	&.selected,
+	&.startRange,
+	&.endRange
+		background var(--fp-selected-bg, #e91e63)
+		border-color var(--fp-selected-bg, #e91e63)
+		color var(--fp-selected-fg, #ffffff)
+		font-weight 600
+		box-shadow var(--fp-selected-shadow, 0 4px 12px rgba(233, 30, 99, 0.5))
+		&:hover,
+		&:focus
+			background var(--fp-selected-hover-bg, #c2185b)
+			border-color var(--fp-selected-hover-bg, #c2185b)
+			box-shadow var(--fp-selected-hover-shadow, 0 6px 16px rgba(233, 30, 99, 0.6))
+	
+	&.inRange
+		background var(--fp-range-bg, rgba(233, 30, 99, 0.15))
+		border-color var(--fp-range-bg, rgba(233, 30, 99, 0.15))
+		box-shadow -5px 0 0 var(--fp-range-bg, rgba(233, 30, 99, 0.15)), 5px 0 0 var(--fp-range-bg, rgba(233, 30, 99, 0.15))
+	
+	&.disabled,
+	&.prevMonthDay,
+	&.nextMonthDay
+		color var(--fp-disabled-color, #cccccc)
+		&:hover
+			background transparent
+			border-color transparent
+			box-shadow none
+	
+	&:hover:not(.disabled):not(.selected)
+		background var(--fp-day-hover-bg, #fce4ec)
+		border-color var(--fp-day-hover-bg, #fce4ec)
+		box-shadow var(--fp-day-hover-shadow, 0 2px 6px rgba(233, 30, 99, 0.2))
+
+.flatpickr-time
+	border-top 2px solid var(--fp-time-border-color, #f48fb1)
+	background var(--fp-time-bg, #fce4ec)
+	
+	input
+		background var(--fp-time-input-bg, #ffffff)
+		border 1px solid var(--fp-time-input-border, #e91e63)
+		border-radius var(--fp-time-input-radius, 6px)
+		color var(--fp-time-input-color, #333333)
+		font-weight 500
+		box-shadow inset 0 1px 3px rgba(0, 0, 0, 0.1)
+		&:hover,
+		&:focus
+			background var(--fp-time-input-hover-bg, #ffffff)
+			border-color var(--fp-time-input-hover-border, #c2185b)
+			box-shadow inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 0 3px rgba(233, 30, 99, 0.1)
