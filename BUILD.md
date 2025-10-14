@@ -97,6 +97,7 @@ Themes are built from individual Stylus files in `src/style/themes/`:
   - `material_orange` - Material Design orange theme
   - `material_red` - Material Design red theme
   - `uikit` - UIKit 3 inspired theme
+  - `custom` - Fully customizable theme using CSS variables (see [CUSTOM_THEME.md](CUSTOM_THEME.md))
 
 ### Plugins Build (`buildExtras`)
 

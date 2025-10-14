@@ -189,6 +189,28 @@
         <button class="theme-btn" data-theme="airbnb">Airbnb</button>
         <button class="theme-btn" data-theme="glassmorphism">Glassmorphism</button>
         <button class="theme-btn" data-theme="uikit">UIKit</button>
+        <button class="theme-btn" data-theme="custom">Custom (CSS Variables) 🎨</button>
+      </div>
+      <div id="custom-theme-info" style="display: none; margin-top: 15px; padding: 15px; background: #f8f9fa; border-radius: 6px; border-left: 4px solid #2563eb;">
+        <strong>♿ Accessible Custom Theme with CSS Variables</strong>
+        <p style="margin: 8px 0; font-size: 13px; color: #666;">
+          The custom theme is neutral by default with full accessibility support (dark mode, high contrast, reduced motion). 
+          Below is an example pink customization using CSS variables - you can customize it to any color scheme you want!
+        </p>
+        <code style="display: block; background: white; padding: 10px; border-radius: 4px; font-size: 12px; overflow-x: auto;">
+          /* Accessibility features built-in */<br>
+          ✓ Auto dark mode (prefers-color-scheme)<br>
+          ✓ High contrast support (prefers-contrast)<br>
+          ✓ Reduced motion support (prefers-reduced-motion)<br>
+          <br>
+          /* Customize with CSS variables */<br>
+          --fp-bg, --fp-border-color, --fp-border-radius,<br>
+          --fp-month-bg, --fp-selected-bg, --fp-today-color, etc.
+        </code>
+        <div id="pink-example" style="margin-top: 10px; padding: 10px; background: #fff; border-radius: 4px; border: 1px solid #e91e63;">
+          <strong style="color: #e91e63;">💅 Pink Example (Applied via CSS variables)</strong>
+          <p style="margin: 5px 0; font-size: 12px; color: #666;">The pink styling you see is applied dynamically with CSS variables. Check the code to see how!</p>
+        </div>
       </div>
     </div>
 
@@ -506,6 +528,51 @@ flatpickr("#disabled-dates", {
       </div>
     </div>
 
+    <!-- Localization -->
+    <div class="demo-section">
+      <h2>🌍 Localization (i18n)</h2>
+      <p class="feature-description">flatpickr supports multiple languages. Here are examples with German (Deutsch) localization</p>
+      <div class="demo-grid">
+        <div class="demo-item">
+          <label>Deutsches Datum (German Date)</label>
+          <input type="text" id="german-date" placeholder="Datum auswählen...">
+        </div>
+        <div class="demo-item">
+          <label>Deutsche Datum & Zeit (German DateTime)</label>
+          <input type="text" id="german-datetime" placeholder="Datum und Zeit auswählen...">
+        </div>
+        <div class="demo-item">
+          <label>Deutscher Datumsbereich (German Range)</label>
+          <input type="text" id="german-range" placeholder="Zeitraum auswählen...">
+        </div>
+      </div>
+      <div class="code-example">
+        <pre><code>// Import German locale
+import { German } from "flatpickr/dist/l10n/de.js";
+
+// German date picker
+flatpickr("#german-date", {
+  locale: German,
+  dateFormat: "d.m.Y"
+});
+
+// German datetime picker (24h format)
+flatpickr("#german-datetime", {
+  locale: German,
+  enableTime: true,
+  time_24hr: true,
+  dateFormat: "d.m.Y H:i"
+});
+
+// German range picker
+flatpickr("#german-range", {
+  locale: German,
+  mode: "range",
+  dateFormat: "d.m.Y"
+});</code></pre>
+      </div>
+    </div>
+
   </div>
   
   <!-- classList polyfill for IE9 -->
@@ -517,11 +584,64 @@ flatpickr("#disabled-dates", {
   <script src="./dist/plugins/monthSelect/index.js"></script>
   <script src="./dist/plugins/scrollPlugin.js"></script>
   <script src="./dist/plugins/weekSelect/weekSelect.js"></script>
+  <script src="./dist/l10n/de.js"></script>
 
   <script>
     // Theme switcher functionality
     var themeButtons = document.querySelectorAll('.theme-btn');
     var mainThemeLink = document.getElementById('main-theme');
+    var customThemeInfo = document.getElementById('custom-theme-info');
+    
+    // Function to apply pink customization to custom theme
+    function applyPinkCustomization() {
+      var style = document.getElementById('custom-pink-style');
+      if (!style) {
+        style = document.createElement('style');
+        style.id = 'custom-pink-style';
+        document.head.appendChild(style);
+      }
+      style.textContent = `
+        .flatpickr-calendar {
+          --fp-border-color: #e91e63;
+          --fp-border-radius: 12px;
+          --fp-shadow: 0 10px 40px rgba(233, 30, 99, 0.3), 0 2px 8px rgba(0, 0, 0, 0.1);
+          
+          --fp-month-bg: #e91e63;
+          --fp-month-fg: #ffffff;
+          --fp-arrow-hover-color: #fce4ec;
+          
+          --fp-weekdays-bg: #f48fb1;
+          --fp-weekdays-fg: #ffffff;
+          
+          --fp-day-hover-bg: #fce4ec;
+          --fp-day-border-radius: 8px;
+          
+          --fp-today-color: #e91e63;
+          --fp-today-bg: rgba(233, 30, 99, 0.1);
+          --fp-today-hover-bg: rgba(233, 30, 99, 0.2);
+          --fp-today-hover-shadow: 0 2px 8px rgba(233, 30, 99, 0.4);
+          
+          --fp-selected-bg: #e91e63;
+          --fp-selected-shadow: 0 4px 12px rgba(233, 30, 99, 0.5);
+          --fp-selected-hover-bg: #c2185b;
+          --fp-selected-hover-shadow: 0 6px 16px rgba(233, 30, 99, 0.6);
+          
+          --fp-range-bg: rgba(233, 30, 99, 0.15);
+          
+          --fp-time-border-color: #f48fb1;
+          --fp-time-bg: #fce4ec;
+          --fp-time-input-border: #e91e63;
+          --fp-time-input-hover-border: #c2185b;
+        }
+      `;
+    }
+    
+    function removePinkCustomization() {
+      var style = document.getElementById('custom-pink-style');
+      if (style) {
+        style.remove();
+      }
+    }
     
     themeButtons.forEach(function(btn) {
       btn.addEventListener('click', function() {
@@ -530,6 +650,15 @@ flatpickr("#disabled-dates", {
         // Update active button
         themeButtons.forEach(function(b) { b.classList.remove('active'); });
         this.classList.add('active');
+        
+        // Show/hide custom theme info and apply pink example
+        if (theme === 'custom') {
+          customThemeInfo.style.display = 'block';
+          applyPinkCustomization();
+        } else {
+          customThemeInfo.style.display = 'none';
+          removePinkCustomization();
+        }
         
         // Change theme
         if (theme === 'default') {
@@ -671,6 +800,25 @@ flatpickr("#disabled-dates", {
           return (date.getDay() === 0 || date.getDay() === 6);
         }
       ]
+    });
+
+    // Localization - German examples
+    flatpickr("#german-date", {
+      locale: flatpickr.l10ns.de,
+      dateFormat: "d.m.Y"
+    });
+
+    flatpickr("#german-datetime", {
+      locale: flatpickr.l10ns.de,
+      enableTime: true,
+      time_24hr: true,
+      dateFormat: "d.m.Y H:i"
+    });
+
+    flatpickr("#german-range", {
+      locale: flatpickr.l10ns.de,
+      mode: "range",
+      dateFormat: "d.m.Y"
     });
   </script>
 </body>
