@@ -191,16 +191,26 @@
         <button class="theme-btn" data-theme="uikit">UIKit</button>
         <button class="theme-btn" data-theme="custom">Custom (CSS Variables) 🎨</button>
       </div>
-      <div id="custom-theme-info" style="display: none; margin-top: 15px; padding: 15px; background: #f8f9fa; border-radius: 6px; border-left: 4px solid #e91e63;">
-        <strong>🎨 Custom Theme with CSS Variables</strong>
+      <div id="custom-theme-info" style="display: none; margin-top: 15px; padding: 15px; background: #f8f9fa; border-radius: 6px; border-left: 4px solid #2563eb;">
+        <strong>♿ Accessible Custom Theme with CSS Variables</strong>
         <p style="margin: 8px 0; font-size: 13px; color: #666;">
-          This theme can be fully customized using CSS variables. Override these variables to change colors, shadows, and more:
+          The custom theme is neutral by default with full accessibility support (dark mode, high contrast, reduced motion). 
+          Below is an example pink customization using CSS variables - you can customize it to any color scheme you want!
         </p>
         <code style="display: block; background: white; padding: 10px; border-radius: 4px; font-size: 12px; overflow-x: auto;">
-          --fp-bg, --fp-border-color, --fp-border-radius, --fp-shadow,<br>
-          --fp-month-bg, --fp-month-fg, --fp-weekdays-bg, --fp-weekdays-fg,<br>
-          --fp-day-fg, --fp-day-hover-bg, --fp-today-color, --fp-selected-bg, etc.
+          /* Accessibility features built-in */<br>
+          ✓ Auto dark mode (prefers-color-scheme)<br>
+          ✓ High contrast support (prefers-contrast)<br>
+          ✓ Reduced motion support (prefers-reduced-motion)<br>
+          <br>
+          /* Customize with CSS variables */<br>
+          --fp-bg, --fp-border-color, --fp-border-radius,<br>
+          --fp-month-bg, --fp-selected-bg, --fp-today-color, etc.
         </code>
+        <div id="pink-example" style="margin-top: 10px; padding: 10px; background: #fff; border-radius: 4px; border: 1px solid #e91e63;">
+          <strong style="color: #e91e63;">💅 Pink Example (Applied via CSS variables)</strong>
+          <p style="margin: 5px 0; font-size: 12px; color: #666;">The pink styling you see is applied dynamically with CSS variables. Check the code to see how!</p>
+        </div>
       </div>
     </div>
 
@@ -582,6 +592,57 @@ flatpickr("#german-range", {
     var mainThemeLink = document.getElementById('main-theme');
     var customThemeInfo = document.getElementById('custom-theme-info');
     
+    // Function to apply pink customization to custom theme
+    function applyPinkCustomization() {
+      var style = document.getElementById('custom-pink-style');
+      if (!style) {
+        style = document.createElement('style');
+        style.id = 'custom-pink-style';
+        document.head.appendChild(style);
+      }
+      style.textContent = `
+        .flatpickr-calendar {
+          --fp-border-color: #e91e63;
+          --fp-border-radius: 12px;
+          --fp-shadow: 0 10px 40px rgba(233, 30, 99, 0.3), 0 2px 8px rgba(0, 0, 0, 0.1);
+          
+          --fp-month-bg: #e91e63;
+          --fp-month-fg: #ffffff;
+          --fp-arrow-hover-color: #fce4ec;
+          
+          --fp-weekdays-bg: #f48fb1;
+          --fp-weekdays-fg: #ffffff;
+          
+          --fp-day-hover-bg: #fce4ec;
+          --fp-day-border-radius: 8px;
+          
+          --fp-today-color: #e91e63;
+          --fp-today-bg: rgba(233, 30, 99, 0.1);
+          --fp-today-hover-bg: rgba(233, 30, 99, 0.2);
+          --fp-today-hover-shadow: 0 2px 8px rgba(233, 30, 99, 0.4);
+          
+          --fp-selected-bg: #e91e63;
+          --fp-selected-shadow: 0 4px 12px rgba(233, 30, 99, 0.5);
+          --fp-selected-hover-bg: #c2185b;
+          --fp-selected-hover-shadow: 0 6px 16px rgba(233, 30, 99, 0.6);
+          
+          --fp-range-bg: rgba(233, 30, 99, 0.15);
+          
+          --fp-time-border-color: #f48fb1;
+          --fp-time-bg: #fce4ec;
+          --fp-time-input-border: #e91e63;
+          --fp-time-input-hover-border: #c2185b;
+        }
+      `;
+    }
+    
+    function removePinkCustomization() {
+      var style = document.getElementById('custom-pink-style');
+      if (style) {
+        style.remove();
+      }
+    }
+    
     themeButtons.forEach(function(btn) {
       btn.addEventListener('click', function() {
         var theme = this.getAttribute('data-theme');
@@ -590,11 +651,13 @@ flatpickr("#german-range", {
         themeButtons.forEach(function(b) { b.classList.remove('active'); });
         this.classList.add('active');
         
-        // Show/hide custom theme info
+        // Show/hide custom theme info and apply pink example
         if (theme === 'custom') {
           customThemeInfo.style.display = 'block';
+          applyPinkCustomization();
         } else {
           customThemeInfo.style.display = 'none';
+          removePinkCustomization();
         }
         
         // Change theme
