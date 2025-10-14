@@ -1842,7 +1842,9 @@ describe("flatpickr", () => {
         },
         KeyboardEvent
       );
-      expect(fp.daysContainer?.contains(document.activeElement as Node)).toBe(true);
+      expect(fp.daysContainer?.contains(document.activeElement as Node)).toBe(
+        true
+      );
 
       // Tab from day should return to input
       simulate(
@@ -1990,8 +1992,6 @@ describe("flatpickr", () => {
       );
       expect(document.activeElement).toStrictEqual(fp.nextMonthNav);
     });
-
-
 
     it("dropdown should correctly load months with minDate", () => {
       const fp = createInstance({

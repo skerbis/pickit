@@ -1801,38 +1801,43 @@ function FlatpickrInstance(
           } else if (!self.config.noCalendar && self.isOpen) {
             // Build tab order for calendar navigation
             const calendarElements: (HTMLElement | null)[] = [];
-            
+
             // Add prev month navigation if not disabled
             if (self.prevMonthNav && !self._hidePrevMonthArrow) {
               calendarElements.push(self.prevMonthNav);
             }
-            
+
             // Add month dropdown if it exists
-            if (self.monthsDropdownContainer && self.config.monthSelectorType !== "static") {
+            if (
+              self.monthsDropdownContainer &&
+              self.config.monthSelectorType !== "static"
+            ) {
               calendarElements.push(self.monthsDropdownContainer);
             }
-            
+
             // Add year input
             if (self.currentYearElement) {
               calendarElements.push(self.currentYearElement);
             }
-            
+
             // Add next month navigation if not disabled
             if (self.nextMonthNav && !self._hideNextMonthArrow) {
               calendarElements.push(self.nextMonthNav);
             }
-            
+
             // Add days container for day navigation
             if (self.daysContainer) {
               calendarElements.push(self.daysContainer);
             }
-            
+
             // Filter out null values
-            const focusableElements = calendarElements.filter((x) => x) as HTMLElement[];
-            
+            const focusableElements = calendarElements.filter(
+              (x) => x
+            ) as HTMLElement[];
+
             // Find current element in the tab order
             let currentIndex = -1;
-            
+
             // Check if we're on the input field
             if (isInput) {
               // TAB from input goes to first calendar element when calendar is open
@@ -1846,18 +1851,23 @@ function FlatpickrInstance(
                 }
               }
               // Shift+TAB from input allows default behavior (go to previous page element)
-            } else if (self.daysContainer && self.daysContainer.contains(eventTarget as Node)) {
+            } else if (
+              self.daysContainer &&
+              self.daysContainer.contains(eventTarget as Node)
+            ) {
               // Check if we're on a specific day
               currentIndex = focusableElements.indexOf(self.daysContainer);
             } else {
-              currentIndex = focusableElements.indexOf(eventTarget as HTMLElement);
+              currentIndex = focusableElements.indexOf(
+                eventTarget as HTMLElement
+              );
             }
-            
+
             if (currentIndex !== -1) {
               e.preventDefault();
-              
+
               const nextIndex = currentIndex + (e.shiftKey ? -1 : 1);
-              
+
               if (nextIndex < 0) {
                 // Before first element, go to input
                 self._input.focus();
@@ -1866,7 +1876,7 @@ function FlatpickrInstance(
                 self._input.focus();
               } else {
                 const targetElement = focusableElements[nextIndex];
-                
+
                 // If targeting daysContainer, focus on appropriate day
                 if (targetElement === self.daysContainer) {
                   if (e.shiftKey) {
