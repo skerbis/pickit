@@ -59,6 +59,15 @@ export const German: CustomLocale = {
   rangeSeparator: " bis ",
   scrollTitle: "Zum Ändern scrollen",
   toggleTitle: "Zum Umschalten klicken",
+  yearAriaLabel: "Jahr",
+  monthAriaLabel: "Monat",
+  hourAriaLabel: "Stunde",
+  minuteAriaLabel: "Minute",
+  prevMonthAriaLabel: "Vorheriger Monat",
+  nextMonthAriaLabel: "Nächster Monat",
+  datePickerAriaLabel: "Datumsauswahl",
+  confirmDateAriaLabel: "Datumswahl bestätigen",
+  monthsAriaLabel: "Monate",
   time_24hr: true,
 };
 

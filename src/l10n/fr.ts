@@ -65,6 +65,15 @@ export const French: CustomLocale = {
   weekAbbreviation: "Sem",
   scrollTitle: "Défiler pour augmenter la valeur",
   toggleTitle: "Cliquer pour basculer",
+  yearAriaLabel: "Année",
+  monthAriaLabel: "Mois",
+  hourAriaLabel: "Heure",
+  minuteAriaLabel: "Minute",
+  prevMonthAriaLabel: "Mois précédent",
+  nextMonthAriaLabel: "Mois suivant",
+  datePickerAriaLabel: "Sélecteur de date",
+  confirmDateAriaLabel: "Confirmer la sélection de date",
+  monthsAriaLabel: "Mois",
   time_24hr: true,
 };
 

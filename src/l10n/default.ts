@@ -68,6 +68,11 @@ export const english: Locale = {
   monthAriaLabel: "Month",
   hourAriaLabel: "Hour",
   minuteAriaLabel: "Minute",
+  prevMonthAriaLabel: "Previous month",
+  nextMonthAriaLabel: "Next month",
+  datePickerAriaLabel: "Date picker",
+  confirmDateAriaLabel: "Confirm date selection",
+  monthsAriaLabel: "Months",
   time_24hr: false,
 };
 

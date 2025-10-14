@@ -402,6 +402,22 @@
       outline: none
       padding: 0
 
+// Safari-specific select fixes
+@supports (-webkit-appearance: none)
+  .flatpickr-monthDropdown-months
+    // Fix for Safari select rendering
+    -webkit-appearance: menulist-button
+    // Ensure proper padding on Safari
+    padding-right: 20px
+    
+  // Fix select arrow positioning on Safari
+  .flatpickr-current-month .flatpickr-monthDropdown-months
+    background-image: none
+    
+  // Prevent Safari from adding extra spacing
+  .flatpickr-monthDropdown-month
+    padding: 2px 8px
+
 .flatpickr-weekdays
   background $weekdaysBackground
   text-align center

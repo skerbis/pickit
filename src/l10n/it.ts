@@ -59,6 +59,15 @@ export const Italian: CustomLocale = {
   weekAbbreviation: "Se",
   scrollTitle: "Scrolla per aumentare",
   toggleTitle: "Clicca per cambiare",
+  yearAriaLabel: "Anno",
+  monthAriaLabel: "Mese",
+  hourAriaLabel: "Ora",
+  minuteAriaLabel: "Minuto",
+  prevMonthAriaLabel: "Mese precedente",
+  nextMonthAriaLabel: "Mese successivo",
+  datePickerAriaLabel: "Selettore data",
+  confirmDateAriaLabel: "Conferma selezione data",
+  monthsAriaLabel: "Mesi",
   time_24hr: true,
 };
 
