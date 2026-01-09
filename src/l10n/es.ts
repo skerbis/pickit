@@ -71,7 +71,8 @@ export const Spanish: CustomLocale = {
   monthsAriaLabel: "Meses",
   weekdayAriaLabel: "Día de la semana",
   calendarAriaLabel: "Calendario",
-  gridAriaLabel: "Cuadrícula del calendario, use las teclas de flecha para navegar",
+  gridAriaLabel:
+    "Cuadrícula del calendario, use las teclas de flecha para navegar",
   rangeStartAriaLabel: "Inicio del rango",
   rangeEndAriaLabel: "Fin del rango",
   todayAriaLabel: "Hoy",

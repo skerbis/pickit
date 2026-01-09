@@ -15,14 +15,14 @@ function weekSelectPlugin(): Plugin<PlusWeeks> {
 
       const days = fp.days.childNodes;
       const clickedDate = day.dateObj;
-      
+
       // Find the start of the week (Sunday) for the clicked date
       const clickedDayOfWeek = clickedDate.getDay();
       const daysToSubtract = clickedDayOfWeek;
       const weekStartDate = new Date(clickedDate);
       weekStartDate.setDate(clickedDate.getDate() - daysToSubtract);
       weekStartDate.setHours(0, 0, 0, 0);
-      
+
       // Find the end of the week (Saturday)
       const weekEndDate = new Date(weekStartDate);
       weekEndDate.setDate(weekStartDate.getDate() + 6);
@@ -50,12 +50,12 @@ function weekSelectPlugin(): Plugin<PlusWeeks> {
         const weekStartDate = new Date(selDate);
         weekStartDate.setDate(selDate.getDate() - daysToSubtract);
         weekStartDate.setHours(0, 0, 0, 0);
-        
+
         // Find the end of the week (Saturday)
         const weekEndDate = new Date(weekStartDate);
         weekEndDate.setDate(weekStartDate.getDate() + 6);
         weekEndDate.setHours(23, 59, 59, 999);
-        
+
         fp.weekStartDay = weekStartDate;
         fp.weekEndDay = weekEndDate;
       }

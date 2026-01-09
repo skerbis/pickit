@@ -1201,8 +1201,14 @@ function FlatpickrInstance(
     self.hourElement.setAttribute("role", "spinbutton");
     self.minuteElement.setAttribute("role", "spinbutton");
 
-    self.hourElement.setAttribute("aria-valuemin", self.config.time_24hr ? "0" : "1");
-    self.hourElement.setAttribute("aria-valuemax", self.config.time_24hr ? "23" : "12");
+    self.hourElement.setAttribute(
+      "aria-valuemin",
+      self.config.time_24hr ? "0" : "1"
+    );
+    self.hourElement.setAttribute(
+      "aria-valuemax",
+      self.config.time_24hr ? "23" : "12"
+    );
     self.minuteElement.setAttribute("aria-valuemin", "0");
     self.minuteElement.setAttribute("aria-valuemax", "59");
 
@@ -1332,10 +1338,13 @@ function FlatpickrInstance(
     }
 
     for (let i = self.config.showMonths; i--; ) {
-      const weekdayElements = weekdaysShort.map((day, idx) => 
-        `<abbr class='flatpickr-weekday' title='${weekdaysLong[idx]}' aria-label='${weekdaysLong[idx]}'>${day}</abbr>`
-      ).join("");
-      
+      const weekdayElements = weekdaysShort
+        .map(
+          (day, idx) =>
+            `<abbr class='flatpickr-weekday' title='${weekdaysLong[idx]}' aria-label='${weekdaysLong[idx]}'>${day}</abbr>`
+        )
+        .join("");
+
       self.weekdayContainer.children[i].innerHTML = weekdayElements;
     }
   }
@@ -1382,7 +1391,7 @@ function FlatpickrInstance(
 
     triggerEvent("onMonthChange");
     updateNavigationCurrentMonth();
-    
+
     // Announce month change to screen readers
     announceToScreenReader(
       `${self.l10n.months.longhand[self.currentMonth]} ${self.currentYear}`
@@ -1803,12 +1812,16 @@ function FlatpickrInstance(
             if (e.shiftKey) {
               changeYear(self.currentYear - 1);
               announceToScreenReader(
-                `${self.l10n.months.longhand[self.currentMonth]} ${self.currentYear - 1}`
+                `${self.l10n.months.longhand[self.currentMonth]} ${
+                  self.currentYear - 1
+                }`
               );
             } else {
               changeMonth(-1);
               announceToScreenReader(
-                `${self.l10n.months.longhand[self.currentMonth]} ${self.currentYear}`
+                `${self.l10n.months.longhand[self.currentMonth]} ${
+                  self.currentYear
+                }`
               );
             }
             focusOnDay(getFirstAvailableDay(1), 0);
@@ -1822,12 +1835,16 @@ function FlatpickrInstance(
             if (e.shiftKey) {
               changeYear(self.currentYear + 1);
               announceToScreenReader(
-                `${self.l10n.months.longhand[self.currentMonth]} ${self.currentYear + 1}`
+                `${self.l10n.months.longhand[self.currentMonth]} ${
+                  self.currentYear + 1
+                }`
               );
             } else {
               changeMonth(1);
               announceToScreenReader(
-                `${self.l10n.months.longhand[self.currentMonth]} ${self.currentYear}`
+                `${self.l10n.months.longhand[self.currentMonth]} ${
+                  self.currentYear
+                }`
               );
             }
             focusOnDay(getFirstAvailableDay(1), 0);
@@ -1836,12 +1853,21 @@ function FlatpickrInstance(
 
         // 't' key - jump to today
         case 84:
-          if (!isTimeObj && !isInput && self.daysContainer && !e.ctrlKey && !e.metaKey) {
+          if (
+            !isTimeObj &&
+            !isInput &&
+            self.daysContainer &&
+            !e.ctrlKey &&
+            !e.metaKey
+          ) {
             e.preventDefault();
             self.jumpToDate(self.now);
             focusOnDay(self.todayDateElem as DayElement, 0);
             announceToScreenReader(
-              `${self.l10n.todayAriaLabel || "Today"}: ${self.formatDate(self.now, self.config.ariaDateFormat)}`
+              `${self.l10n.todayAriaLabel || "Today"}: ${self.formatDate(
+                self.now,
+                self.config.ariaDateFormat
+              )}`
             );
           }
           break;
@@ -2175,10 +2201,12 @@ function FlatpickrInstance(
       self._input.classList.add("active");
       triggerEvent("onOpen");
       positionCalendar(positionElement);
-      
+
       // Announce calendar opened to screen readers
       announceToScreenReader(
-        `${self.l10n.datePickerAriaLabel || "Date picker"} ${self.l10n.months.longhand[self.currentMonth]} ${self.currentYear}`
+        `${self.l10n.datePickerAriaLabel || "Date picker"} ${
+          self.l10n.months.longhand[self.currentMonth]
+        } ${self.currentYear}`
       );
     }
 
@@ -2626,20 +2654,28 @@ function FlatpickrInstance(
     buildDays();
 
     updateValue();
-    
+
     // Announce selected date to screen readers
     if (self.config.mode === "single") {
       announceToScreenReader(
-        `${self.formatDate(selectedDate, self.config.ariaDateFormat)} ${self.l10n.datePickerAriaLabel || "selected"}`
+        `${self.formatDate(selectedDate, self.config.ariaDateFormat)} ${
+          self.l10n.datePickerAriaLabel || "selected"
+        }`
       );
     } else if (self.config.mode === "range") {
       if (self.selectedDates.length === 1) {
         announceToScreenReader(
-          `${self.l10n.rangeStartAriaLabel || "Range start"}: ${self.formatDate(selectedDate, self.config.ariaDateFormat)}`
+          `${self.l10n.rangeStartAriaLabel || "Range start"}: ${self.formatDate(
+            selectedDate,
+            self.config.ariaDateFormat
+          )}`
         );
       } else if (self.selectedDates.length === 2) {
         announceToScreenReader(
-          `${self.l10n.rangeEndAriaLabel || "Range end"}: ${self.formatDate(selectedDate, self.config.ariaDateFormat)}`
+          `${self.l10n.rangeEndAriaLabel || "Range end"}: ${self.formatDate(
+            selectedDate,
+            self.config.ariaDateFormat
+          )}`
         );
       }
     }

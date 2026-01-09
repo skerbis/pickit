@@ -132,7 +132,9 @@ function buildExtras(folder: "plugins" | "l10n") {
         ...(cssPaths.map((p) => fs.copy(p, p.replace("src", "dist"))) as any),
         ...stylusPaths.map(async (stylusPath) => {
           const src = await readFileAsync(stylusPath);
-          const destPath = stylusPath.replace("src", "dist").replace(".styl", ".css");
+          const destPath = stylusPath
+            .replace("src", "dist")
+            .replace(".styl", ".css");
           await fs.ensureDir(path.dirname(destPath));
           return fs.writeFile(destPath, await transpileStyle(src));
         }),

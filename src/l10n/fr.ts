@@ -76,7 +76,8 @@ export const French: CustomLocale = {
   monthsAriaLabel: "Mois",
   weekdayAriaLabel: "Jour de la semaine",
   calendarAriaLabel: "Calendrier",
-  gridAriaLabel: "Grille du calendrier, utilisez les touches fléchées pour naviguer",
+  gridAriaLabel:
+    "Grille du calendrier, utilisez les touches fléchées pour naviguer",
   rangeStartAriaLabel: "Début de la plage",
   rangeEndAriaLabel: "Fin de la plage",
   todayAriaLabel: "Aujourd'hui",
