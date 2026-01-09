@@ -48,7 +48,7 @@ jobs:
       - name: Create demo package
         run: |
           mkdir -p release-demo
-          cp index.template.html release-demo/index.html
+          cp demo.html release-demo/index.html
           cp -r dist release-demo/
           cd release-demo
           zip -r ../pickit-${{ inputs.version }}-demo.zip .
