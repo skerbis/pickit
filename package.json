@@ -1,6 +1,6 @@
 {
   "name": "pickit",
-  "version": "1.0.0-beta1",
+  "version": "1.0.0",
   "description": "An accessible, lightweight datetime picker - Forked from flatpickr with enhanced accessibility features",
   "scripts": {
     "build": "run-s build:pre build:build build:esm build:types build:post",
