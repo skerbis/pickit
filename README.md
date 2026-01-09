@@ -6,10 +6,9 @@
 
 ## Why Pickit?
 
-Pickit is more than just a date picker - it's a complete accessible picker collection:
+Pickit is more than just a date picker - it's an accessibility-first date and time picker:
 
 - 📅 **Date & Time Picker** - Enhanced version of flatpickr with full accessibility
-- 🎨 **Color Picker** - Accessible color selection with keyboard navigation
 - ✅ **WCAG 2.1 AA compliant** with comprehensive ARIA support
 - ♿ **Screen reader optimized** with live regions and proper announcements
 - ⌨️ **Full keyboard navigation** for all picker types
@@ -43,46 +42,15 @@ npm install pickit
 </script>
 ```
 
-### Color Picker Usage
-
-```html
-<!-- Include CSS -->
-<link rel="stylesheet" href="node_modules/pickit/dist/pickit.css">
-<link rel="stylesheet" href="node_modules/pickit/dist/plugins/colorPicker/colorPicker.css">
-
-<!-- Your input -->
-<input type="text" id="colorpicker" placeholder="#4ECDC4">
-
-<!-- Include JS -->
-<script src="node_modules/pickit/dist/pickit.js"></script>
-<script src="node_modules/pickit/dist/plugins/colorPicker/colorPicker.js"></script>
-<script>
-  // Initialize color picker
-  pickit("#colorpicker", {
-    plugins: [colorPicker({
-      format: 'hex',
-      showAlpha: false,
-      presetColors: ['#FF6B6B', '#4ECDC4', '#45B7D1']
-    })]
-  });
-</script>
-```
-
 ### ES6 Module
 
 ```javascript
 import pickit from "pickit";
-import colorPicker from "pickit/dist/plugins/colorPicker/colorPicker.js";
 
 // Date picker
 pickit("#datepicker", {
   enableTime: true,
   dateFormat: "Y-m-d H:i",
-});
-
-// Color picker
-pickit("#colorpicker", {
-  plugins: [colorPicker()]
 });
 ```
 
@@ -129,35 +97,9 @@ pickit("#datepicker", {
 - High contrast mode support
 - Focus trap in modal mode
 
-### Color Picker
-
-### 1. **HSL Color Space**
-- Intuitive hue, saturation, and lightness controls
-- Optional alpha channel for transparency
-- Real-time color preview
-
-### 2. **Keyboard Navigation**
-- Arrow keys for saturation/lightness box navigation
-- Left/Right arrows for hue slider
-- Tab navigation between all controls
-- Enter to select preset colors
-
-### 3. **ARIA Support**
-- `role="slider"` for hue and alpha controls
-- `aria-valuenow` for current values
-- Live region announcements for color changes
-- Proper labeling for all interactive elements
-
-### 4. **Features**
-- Hex color input with validation
-- Preset color palette (customizable)
-- Format options: HEX, RGB, HSL
-- Visual preview of selected color
-- Drag support for saturation box
-
 ## Motivation
 
-Almost every large SPA or project involves date, time, and color input. Browser's native implementations of those are inconsistent and limited in functionality. Most other libraries require you to pull in heavy dependencies like jQuery, Bootstrap, and moment.js. Additionally, many pickers lack proper accessibility support.
+Almost every large SPA or project involves date and time input. Browser's native implementations are inconsistent and limited in functionality. Most other libraries require you to pull in heavy dependencies like jQuery, Bootstrap, and moment.js. Additionally, many pickers lack proper accessibility support.
 
 Pickit aims to be:
 - ✨ **Beautiful** out of the box
