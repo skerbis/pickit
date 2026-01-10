@@ -4,7 +4,6 @@
 
 > 🔄 **Fork von flatpickr** - Dieses Projekt baut auf der hervorragenden Grundlage von [flatpickr](https://github.com/flatpickr/flatpickr) auf und erweitert es um verbesserte Barrierefreiheit-Features. Vielen Dank an das flatpickr-Team für die großartige Arbeit!
 
-[![npm version](https://img.shields.io/npm/v/pickit.svg)](https://www.npmjs.com/package/pickit)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 ## ✨ Features
@@ -545,6 +544,5 @@ Pickit ist ein Fork von [flatpickr](https://github.com/flatpickr/flatpickr) von 
 ## 🔗 Links
 
 - [GitHub Repository](https://github.com/skerbis/pickit)
-- [npm Package](https://www.npmjs.com/package/pickit-color?activeTab=readme)
 - [Custom Theme Dokumentation](CUSTOM_THEME.md)
 - [Build-Anleitung](BUILD.md)
