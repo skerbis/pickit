@@ -100,10 +100,7 @@ async function buildScripts() {
   try {
     await buildPickitJs();
     const transpiled = await readFileAsync("./dist/pickit.js");
-    // Also create flatpickr.js for backwards compatibility
-    fs.writeFile("./dist/flatpickr.js", transpiled);
     fs.writeFile("./dist/pickit.min.js", await uglify(transpiled));
-    fs.writeFile("./dist/flatpickr.min.js", await uglify(transpiled));
   } catch (e) {
     logErr(e);
   }
@@ -191,9 +188,6 @@ async function buildStyle() {
     await Promise.all([
       fs.writeFile("./dist/pickit.css", await transpileStyle(src)),
       fs.writeFile("./dist/pickit.min.css", await transpileStyle(src, true)),
-      // Also create flatpickr.css for backwards compatibility
-      fs.writeFile("./dist/flatpickr.css", await transpileStyle(src)),
-      fs.writeFile("./dist/flatpickr.min.css", await transpileStyle(src, true)),
       fs.writeFile("./dist/ie.css", await transpileStyle(srcIE)),
     ]);
   } catch (e) {
